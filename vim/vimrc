@@ -1,7 +1,13 @@
 " don't sacrifice functionality and features just to preserve backward compatibility with vi
 :set nocompatible
 
+" optimize syntax highlighting for a dark terminal
+:set bg=dark
 set rtp+=~/.vim/bundle/Vundle.vim
+" the next two lines use the F5 key to toggle paste mode on/off
+:nnoremap <F5> :set invpaste paste?<CR>
+:set pastetoggle=<F5>
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -12,20 +18,15 @@ Plugin 'VundleVim/Vundle.vim'
 " Perl IDE for Vim
 "Plugin 'wolfgangmehner/perl-support'
 
-" Plugin 'osfameron/perl-tags-vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-" https://github.com/c9s/perlomni.vim
-Plugin 'c9s/perlomni.vim'
-Plugin 'ervandew/supertab'
-Plugin 'dense-analysis/ale'
-" optimize syntax highlighting for a dark terminal
-:set bg=dark
-
-" the next two lines use the F5 key to toggle paste mode on/off
-:nnoremap <F5> :set invpaste paste?<CR>
-:set pastetoggle=<F5>
-
+if !exists('g:vscode')
+  " Plugin 'osfameron/perl-tags-vim'
+  Plugin 'majutsushi/tagbar'
+  Plugin 'scrooloose/nerdtree'
+  " https://github.com/c9s/perlomni.vim
+  Plugin 'c9s/perlomni.vim'
+  Plugin 'ervandew/supertab'
+  Plugin 'dense-analysis/ale'
+endif
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "
